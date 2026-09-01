@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neo-alfabeto emotivo · App di co-creazione</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <canvas id="mesh" aria-hidden="true"></canvas>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <p class="eyebrow">Un alfabeto co-creato</p>
+      <h1>Neo-alfabeto <span>emotivo</span></h1>
+      <p class="subtitle">Sei emozioni, un carattere tipografico che cambia con te</p>
+    </div>
+    <div class="topbar-actions">
+      <button id="btnHelp" class="btn ghost" type="button" aria-label="Come funziona l'app">Aiuto</button>
+    </div>
+  </header>
+
+  <main class="layout editor-layout">
+    <div class="card area-emo">
+      <h2>Emozione</h2>
+      <p class="hint">Trascina il punto sul quadrato (più in alto = attivata, più a destra = piacevole), oppure imposta i pesi a mano con gli slider.</p>
+      <div class="pad-wrap">
+        <canvas id="pad" width="300" height="300" aria-label="Quadrato delle emozioni: valenza per attivazione"></canvas>
+        <div id="pad-readout" class="readout"></div>
+      </div>
+      <div class="color-readout" aria-live="polite">
+        <span class="swatch" id="color-swatch"></span>
+        <span id="color-hex" class="color-hex">—</span>
+      </div>
+      <div class="chip-row" id="emotion-chips"></div>
+      <hr class="card-divider" />
+      <div class="weight-list" id="weight-sliders"></div>
+    </div>
+
+    <div class="card stage-card area-let">
+      <div class="stage-toolbar">
+        <span class="stage-title">Lettera modificabile</span>
+        <div class="toolbar-actions">
+          <button id="btnEditing" class="btn ghost" type="button" aria-pressed="false">Editing</button>
+          <button id="btnContribute" class="btn primary" type="button">Conferma contributo</button>
+          <button id="btnCommunity" class="btn ghost" type="button" aria-label="Cancella tutti i contributi salvati">Azzera contributi</button>
+          <a id="btnHistory" class="btn ghost" href="storico.html">Storico</a>
+        </div>
+      </div>
+      <div class="letter-palette" id="letter-palette"></div>
+      <div class="canvas-frame">
+        <canvas id="editor" width="720" height="560" aria-label="Lettera modificabile: scegli un'emozione, poi attiva Editing per spostare i punti"></canvas>
+        <div class="editor-hint" id="editor-hint">Scegli un'emozione, poi clicca Editing per modificare i punti</div>
+      </div>
+      <div class="btn-row tools-actions">
+        <button id="btnUndo" class="btn ghost" type="button" aria-label="Annulla l'ultima modifica">Annulla ultima modifica</button>
+        <button id="btnReset" class="btn ghost" type="button" aria-label="Azzera le modifiche">Azzera modifiche</button>
+        <button id="btnSvgLetter" class="btn" type="button">SVG lettera</button>
+        <button id="btnSvgAlphabet" class="btn" type="button">SVG alfabeto</button>
+        <button id="btnFont" class="btn primary" type="button">Font TTF</button>
+      </div>
+      <p class="hint small">Il font viene generato nel browser con le forme attuali (emozione + tuo disegno).</p>
+    </div>
+
+    <div class="card stage-card area-scr">
+      <div class="stage-toolbar">
+        <span class="stage-title">Anteprima parola</span>
+        <div class="toolbar-actions">
+          <button id="btnSvgWord" class="btn" type="button">SVG parola</button>
+        </div>
+      </div>
+      <div class="canvas-frame preview-frame">
+        <canvas id="preview" width="900" height="220" aria-label="Anteprima della parola scritta"></canvas>
+        <input type="text" id="word-input" class="word-overlay" value="CIAO" maxlength="40" aria-label="Scrivi la parola da anteprime" />
+      </div>
+      <p class="hint small">Clicca sull'anteprima e scrivi: la parola si compone con l'emozione scelta e con il tuo disegno.</p>
+    </div>
+  </main>
+
+  <dialog id="helpDialog" class="dialog">
+    <div class="dialog-inner">
+      <h2>Come funziona</h2>
+      <ol>
+        <li><b>Emozione</b>: trascina il punto sul quadrato (valenza × attivazione) o tocca una delle sei emozioni.</li>
+        <li><b>Modifica</b>: seleziona un'emozione al 100%, attiva Editing e sposta i punti condivisi della lettera in modo controllato.</li>
+        <li><b>Contribuisci</b>: conferma il contributo: si salva sull'emozione in cui ti trovi e si somma alla media di quelli già salvati sul computer.</li>
+        <li><b>Scrivi</b>: componi una parola con la forma corrente.</li>
+        <li><b>Esporta</b>: scarica la lettera o la parola in SVG, o il font TTF con tutte le forme attuali.</li>
+      </ol>
+      <p class="hint">Il sistema dei punti condivisi mantiene la fedeltà al segno originale: il gesto libero diventa uno spostamento misurato dei punti.</p>
+      <button class="btn primary" id="btnCloseHelp" type="button">Chiudi</button>
+    </div>
+  </dialog>
+  <script src="js/app.js"></script>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

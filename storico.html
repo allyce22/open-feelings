@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neo-alfabeto emotivo · Storico dei contributi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="history-page">
+  <canvas id="mesh" aria-hidden="true"></canvas>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <p class="eyebrow">Un alfabeto co-creato</p>
+      <h1>Neo-alfabeto <span>emotivo</span></h1>
+      <p class="subtitle">Storico dei contributi salvati sul tuo computer</p>
+    </div>
+    <div class="topbar-actions">
+      <a class="btn ghost" href="index.html" aria-label="Torna all'editor">← Torna all'editor</a>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel controls">
+      <div class="card">
+        <h2>Lettere</h2>
+        <p class="hint">Scegli una lettera per vedere com'è evoluta su una specifica emozione.</p>
+        <div class="letter-palette" id="history-letters"></div>
+        <p class="hint">Scegli l'emozione da visualizzare.</p>
+        <div class="chip-row" id="history-emotions"></div>
+      </div>
+    </section>
+    <section class="panel stage">
+      <div class="card">
+        <h2 id="history-heading">Storico</h2>
+        <div class="history-list" id="history-list"></div>
+        <p class="hint small">Ogni passo è la media cumulativa dei contributi salvati su questa lettera.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+  <script src="js/storico.js"></script>
+</body>
+</html>
