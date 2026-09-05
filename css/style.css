@@ -60,6 +60,8 @@ body {
 }
 .topbar h1 span { color: var(--accent); font-style: italic; font-weight: 500; }
 .subtitle { margin: 6px 0 0; color: var(--ink-soft); font-size: .84rem; }
+.topbar-inner { flex: 1; }
+.topbar-logo { height: 48px; width: auto; display: block; }
 .topbar-actions { display: flex; gap: 8px; flex: none; }
 
 /* ---------- layout ---------- */
