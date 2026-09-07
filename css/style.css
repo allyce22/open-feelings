@@ -39,7 +39,7 @@ body {
   justify-content: space-between;
   gap: 16px;
   padding: 22px 28px;
-  background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(245,245,245,0.2) 100%);
   border-bottom: 1px solid var(--line);
 }
 .eyebrow {
