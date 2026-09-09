@@ -13,6 +13,7 @@
   --shadow-lift: 0 2px 4px rgba(43, 33, 24, .06), 0 16px 34px rgba(43, 33, 24, .10);
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-ui: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-letter: "Roboto", sans-serif;
   /* identità emozionale */
   --noia: #9AA0A6;
   --tristezza: #3E6BB0;
@@ -336,7 +337,7 @@ input[type="range"]::-moz-range-thumb {
   font-size: .88rem;
   color: var(--ink);
   cursor: pointer;
-  font-family: var(--font-display);
+  font-family: var(--font-letter);
   transition: background .1s ease, transform .08s ease, border-color .1s ease;
 }
 .letter-palette button:hover,
