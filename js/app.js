@@ -741,7 +741,7 @@ function downloadSvg(svgString, filename) {
 
 function downloadFont(font, filename) {
   const ab = font.toArrayBuffer();
-  download(new Blob([new Uint8Array(ab)], { type: "font/ttf" }), filename);
+  download(new Blob([new Uint8Array(ab)], { type: "font/otf" }), filename);
 }
 /* ===== pad.js ===== */
 // Pad circumplex: valenza (sinistra→destra) × attivazione (basso→alto)
@@ -1704,9 +1704,9 @@ async function boot() {
   $("btnFont").addEventListener("click", () => {
     downloadFont(
       buildFont(resolveGlyph, store.charset, store.meta.upperAccents),
-      "neoalfabeto-emotivo-cco.ttf"
+      "neoalfabeto-emotivo-cco.otf"
     );
-    showToast("Font TTF scaricato.");
+    showToast("Font OTF scaricato.");
   });
 
   // aiuto
