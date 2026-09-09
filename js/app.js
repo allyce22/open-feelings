@@ -1346,6 +1346,20 @@ function resolveGlyph(ch) {
   return { contours: base.contours, advance: base.advance };
 }
 
+function makeEmotionResolver(emotionIdx) {
+  return function (ch) {
+    const norm = store.normalizeChar(ch);
+    if (norm === null) return null;
+    const glyfs = store.glyphsForChar(norm);
+    const ew = store.emotions.map((_, j) => (j === emotionIdx ? 1 : 0));
+    const base = interpolateGlyph(glyfs, ew);
+    const emotion = store.emotions[emotionIdx];
+    const mean = community.contributionMean(norm, emotion.id);
+    const c = mean ? applyDeltas(base.contours, mean) : base.contours;
+    return { contours: c, advance: base.advance };
+  };
+}
+
 let pad, editor, preview, palette, chips;
 let shapeCacheChar = null;
 let shapeCache = null;
@@ -1707,6 +1721,22 @@ async function boot() {
       "neoalfabeto-emotivo-cco.otf"
     );
     showToast("Font OTF scaricato.");
+  });
+  $("btnFontAll").addEventListener("click", async () => {
+    showToast("Generazione font in corso...");
+    await new Promise(r => setTimeout(r, 50));
+    for (let i = 0; i < store.emotions.length; i++) {
+      const emotion = store.emotions[i];
+      if (emotion.neutral) continue;
+      const resolveForEmotion = makeEmotionResolver(i);
+      const font = buildFont(resolveForEmotion, store.charset, store.meta.upperAccents);
+      font.names.fontFamily = { en: "Neoalfabeto " + emotion.id };
+      font.names.fontSubfamily = { en: "Regular" };
+      const filename = "neoalfabeto-" + emotion.id.toLowerCase() + ".otf";
+      downloadFont(font, filename);
+      await new Promise(r => setTimeout(r, 100));
+    }
+    showToast("6 font scaricati.");
   });
 
   // aiuto
