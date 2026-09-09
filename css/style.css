@@ -328,7 +328,7 @@ input[type="range"]::-moz-range-thumb {
   align-items: center;
   gap: 8px;
 }
-.letter-palette { display: flex; flex-wrap: wrap; gap: 4px; max-width: 100%; margin-bottom: 12px; }
+.letter-palette { display: flex; flex-wrap: wrap; gap: 4px; max-width: 100%; margin-bottom: 12px; overflow: hidden; }
 .letter-palette button,
 .letter-chip {
   position: relative;
