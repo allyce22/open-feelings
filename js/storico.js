@@ -73,14 +73,15 @@
     const emotions = store.visibleEmotions;
     const letterChips = [];
     const firstWith = [];
+    const ua = (store.meta && store.meta.upperAccents) || {};
     for (const ch of store.charset) {
       if (ch === " ") continue;
       const b = document.createElement("button");
       b.className = "letter-chip";
       b.setAttribute("type", "button");
-      b.textContent = ch;
+      b.textContent = ua[ch] || ch;
       b.dataset.char = ch;
-      b.setAttribute("aria-label", `Lettera ${ch}`);
+      b.setAttribute("aria-label", `Lettera ${ua[ch] || ch}`);
       const badge = document.createElement("span");
       badge.className = "letter-badge";
       b.appendChild(badge);
