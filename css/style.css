@@ -410,6 +410,76 @@ input[type="range"]::-moz-range-thumb {
 #editor { background: #fff; border-radius: 9px; }
 #preview { background: #fff; border-radius: 9px; }
 
+/* fullscreen button */
+.fullscreen-btn {
+  display: none;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  background: rgba(255,255,255,.85);
+  color: var(--ink);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(43,33,24,.15);
+  transition: background .12s ease, transform .08s ease;
+  backdrop-filter: blur(4px);
+}
+.fullscreen-btn:hover { background: #fff; transform: scale(1.08); }
+@media (max-width: 980px) {
+  .fullscreen-btn { display: flex; }
+}
+
+/* fullscreen state — class-based for mobile compat */
+.canvas-frame.is-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #1a1a1a;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.canvas-frame.is-fullscreen #editor {
+  border-radius: 4px;
+  background: #fff;
+}
+.canvas-frame.is-fullscreen .fullscreen-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,.9);
+  border-color: rgba(255,255,255,.3);
+  display: flex;
+}
+.canvas-frame.is-fullscreen .editor-hint { display: none; }
+.canvas-frame.is-fullscreen .fullscreen-label {
+  display: block;
+  position: fixed;
+  bottom: 74px;
+  right: 20px;
+  z-index: 10000;
+  color: rgba(255,255,255,.7);
+  font-size: .72rem;
+  font-family: var(--font-ui);
+  pointer-events: none;
+}
+.fullscreen-label { display: none; }
+
 /* export sotto la lettera */
 .export-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .tools-actions { margin-top: 10px; }

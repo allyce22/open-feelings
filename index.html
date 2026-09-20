@@ -52,9 +52,13 @@
         </div>
       </div>
       <div class="letter-palette" id="letter-palette"></div>
-      <div class="canvas-frame">
+      <div class="canvas-frame" id="canvas-frame">
         <canvas id="editor" width="720" height="560" aria-label="Lettera modificabile: scegli un'emozione, poi attiva Editing per spostare i punti"></canvas>
         <div class="editor-hint" id="editor-hint">Scegli un'emozione, poi clicca Editing per modificare i punti</div>
+        <span class="fullscreen-label">Tocca per uscire</span>
+        <button id="btnFullscreen" class="fullscreen-btn" type="button" aria-label="Schermo intero">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+        </button>
       </div>
       <div class="btn-row tools-actions">
         <button id="btnUndo" class="btn ghost" type="button" aria-label="Annulla l'ultima modifica">Annulla ultima modifica</button>
