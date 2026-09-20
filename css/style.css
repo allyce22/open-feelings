@@ -94,6 +94,18 @@ body {
       "scr";
   }
 }
+@media (max-width: 640px) {
+  .topbar { padding: 8px 14px; }
+  .topbar h1 { font-size: 1.2rem; }
+  .layout { padding: 14px 12px 32px; gap: 14px; }
+  .card { padding: 14px 14px; }
+  .stage-toolbar { flex-direction: column; align-items: flex-start; }
+  .toolbar-actions { width: 100%; }
+  .toolbar-actions .btn, .toolbar-actions .btn.ghost { font-size: .72rem; padding: 6px 10px; }
+  .btn-row .btn { font-size: .72rem; padding: 6px 10px; }
+  #pad { width: 240px; height: 240px; }
+  .weight-row { grid-template-columns: 80px 1fr 44px; }
+}
 
 .panel { display: flex; flex-direction: column; gap: 18px; }
 
@@ -103,7 +115,6 @@ body {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 18px 20px;
-  overflow: hidden;
   transition: box-shadow .18s ease, transform .08s ease;
 }
 .card:hover { box-shadow: var(--shadow-lift); }
@@ -402,7 +413,7 @@ input[type="range"]::-moz-range-thumb {
 /* export sotto la lettera */
 .export-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .tools-actions { margin-top: 10px; }
-.toolbar-actions { display: flex; align-items: center; gap: 8px; }
+.toolbar-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .btn.active {
   background: var(--accent);
   color: #fff;
